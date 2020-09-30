@@ -2,9 +2,7 @@ from plane import Plane
 from utils import sum, V3
 from intersect import Intersect
 
-# Cubos
-# AA Bounding Box: axis adjacent Bounding Box
-class AABB(object):
+class Cube(object):
     def __init__(self, position, size, material):
         self.position = position
         self.size = size
@@ -23,7 +21,7 @@ class AABB(object):
         self.planes.append( Plane( sum(position, V3(0,0,-halfSize)), V3(0,0,-1), material))
 
 
-    def rayIntersect(self, orig, dir):
+    def rayIntersect(self, orig, direction):
 
         epsilon = 0.001
 
@@ -38,11 +36,10 @@ class AABB(object):
         intersect = None
 
         for plane in self.planes:
-            planeInter = plane.rayIntersect(orig, dir)
+            planeInter = plane.rayIntersect(orig, direction)
 
             if planeInter is not None:
 
-                # Si estoy dentro del bounding box
                 if planeInter.point[0] >= boundsMin[0] and planeInter.point[0] <= boundsMax[0]:
                     if planeInter.point[1] >= boundsMin[1] and planeInter.point[1] <= boundsMax[1]:
                         if planeInter.point[2] >= boundsMin[2] and planeInter.point[2] <= boundsMax[2]:

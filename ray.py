@@ -5,7 +5,8 @@ from materials import mona2, tono3, adorno2
 import random
 from light import *
 from color import *
-from cube import AABB
+from cube import Cube
+from envmap import Envmap
 
 '''
     Diana Ximena de León Figueroa
@@ -27,6 +28,7 @@ class Raytracer(object):
         self.height = height
         self.scene = []
         self.currentColor = BACKGROUND
+        self.envMap = None
         self.clear()
 
     def clear(self):
@@ -63,6 +65,8 @@ class Raytracer(object):
         material, intersect = self.sceneIntersect(origin, direction)
         
         if material is None or recursion >= MAX_RECURSION_DEPTH:
+            if self.envMap:
+                return self.envMap.getColor(direction)
             return self.currentColor
             # Si el rayo no golpeo nada o si llego al limite de recursion
         
@@ -126,13 +130,14 @@ class Raytracer(object):
 
 
 r = Raytracer(400, 400)
+r.envMap = Envmap('fondo.bmp')
 r.light = Light(
     position = V3(0, 0, 20),
     intensity = 1.5
 )
 r.scene = [
     Sphere(V3(0, 0, -10), 1.5, tono3),
-    AABB(V3(0, 3, -10), 2, adorno2),
+    Cube(V3(0, 3, -10), 2, adorno2),
 ]
 r.render()
 
