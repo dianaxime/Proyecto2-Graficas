@@ -36,7 +36,7 @@ class Envmap(object):
 
         x = int( (atan2( direction[2], direction[0]) / (2 * pi) + 0.5) * self.width)
         y = int( acos(-direction[1]) / pi * self.height )
-
+        
         #print(x, y)
         if x < self.width and y < self.height:
             return self.pixels[y][x]

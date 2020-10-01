@@ -7,6 +7,8 @@ from light import *
 from color import *
 from cube import Cube
 from envmap import Envmap
+from pyramid import Pyramid
+from ellipse import Ellipse
 
 '''
     Diana Ximena de León Figueroa
@@ -136,8 +138,10 @@ r.light = Light(
     intensity = 1.5
 )
 r.scene = [
-    Sphere(V3(0, 0, -10), 1.5, tono3),
-    Cube(V3(0, 3, -10), 2, adorno2),
+    #Sphere(V3(0, 0, -10), 1.5, tono3),
+    #Cube(V3(0, 3, -10), 2, adorno2),
+    Pyramid([V3(0.5, 0.5, 1), V3(1, 0.5, 1), V3(0, 1, 1)], tono3)
+    #Ellipse(V3(0,0, -10), 2, 1, tono3)
 ]
 r.render()
 
