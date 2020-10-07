@@ -8,6 +8,7 @@ from color import *
 from cube import Cube
 from envmap import Envmap
 from pyramid import Pyramid
+from ambientLight import AmbientLight
 
 
 '''
@@ -31,6 +32,7 @@ class Raytracer(object):
         self.scene = []
         self.currentColor = BACKGROUND
         self.envMap = None
+        self.ambientLight = None
         self.clear()
 
     def clear(self):
@@ -74,6 +76,11 @@ class Raytracer(object):
         
         lightDir = norm(sub(self.light.position, intersect.point))
         lightDistance = length(sub(self.light.position, intersect.point))
+
+        if self.ambientLight:
+            ambientColor = self.ambientLight.color * self.ambientLight.strength
+        else:
+            ambientColor = self.currentColor
         
         offsetNormal = mul(intersect.normal, 1.1)
         shadowOrigin = sub(intersect.point, offsetNormal) if dot(lightDir, intersect.normal) < 0 else sum(intersect.point, offsetNormal)
@@ -109,7 +116,7 @@ class Raytracer(object):
         reflected = reflectedColor * material.albedo[2]
         refracted = refractedColor * material.albedo[3]
         
-        return diffuse + specular + reflected + refracted
+        return ambientColor + diffuse + specular + reflected + refracted
 
 
     def render(self):
@@ -134,9 +141,10 @@ class Raytracer(object):
 r = Raytracer(400, 400)
 #r.envMap = Envmap('fondo.bmp')
 r.light = Light(
-    position = V3(0, 0, 20),
-    intensity = 1.5
+    position = V3(0, 20, 20),
+    intensity = 2
 )
+r.ambientLight = AmbientLight(strength = 0.1)
 r.scene = [
     #Sphere(V3(0, 0, -10), 1.5, tono3),
     #Cube(V3(0, 3, -10), 2, adorno2),
@@ -145,7 +153,7 @@ r.scene = [
     #Pyramid([V3(1, -2, -10), V3(-1, 2, -5), V3(-5, -2, -10), V3(0, -1, -7.5)], blue1),
     #esta se ve como piramide
     #Pyramid([V3(-3, -2, -10), V3(-2, 1, -5), V3(-6, -2, -10), V3(-1, -1, -7.5)], blue1),
-    Pyramid([V3(-1, -2, -10), V3(-3, 1, -5), V3(-5, -2, -10), V3(-3, -1, -7.5)], blue2),
+    Pyramid([V3(-1, -2, -10), V3(-3, 1, -10), V3(-5, -2, -10), V3(-3, -2, -10)], blue2),
     #Pyramid([V3(3, -2, -10), V3(2, 1, -5), V3(6, -2, -10), V3(1, -1.80, -7.5)], blue2),
     #Pyramid([V3(2, -2, -10), V3(1, 2, -5), V3(4, -2, -10), V3(1, -1, -7.5)], blue1),
 ]

@@ -41,5 +41,5 @@ adorno2 = Material(diffuse = MAROON, albedo = (0.9, 0.9, 0.1, 0.1), spec = 30, r
 mona2 = Material(diffuse = GREEN, albedo = (0, 10, 0, 0.8), spec = 1425, refractionIndex = 1.5)
 
 
-blue1 = Material(diffuse = BLUE1, albedo = (1, 1, 0.1, 0.1), spec = 30, refractionIndex = 0)
-blue2 = Material(diffuse = BLUE2, albedo = (1, 1, 0.1, 0.1), spec = 30, refractionIndex = 0)
+blue1 = Material(diffuse = BLUE1, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
+blue2 = Material(diffuse = BLUE2, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)

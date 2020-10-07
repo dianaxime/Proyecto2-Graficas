@@ -38,10 +38,10 @@ class Pyramid(object):
     def rayIntersect(self, origin, direction):
         v0, v1, v2, v3 = self.arrPoints
         sides = [
-            self.side(v0, v3, v2, origin, direction),
-            self.side(v0, v1, v2, origin, direction),
-            self.side(v1, v3, v2, origin, direction),
-            self.side(v0, v1, v3, origin, direction)
+            self.side(v0, v2, v3, origin, direction),
+            self.side(v0, v2, v1, origin, direction),
+            self.side(v1, v2, v3, origin, direction),
+            self.side(v0, v3, v1, origin, direction)
         ]
 
         t = float('inf')
