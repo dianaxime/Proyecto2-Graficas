@@ -1,21 +1,17 @@
-from plane import Plane
-from utils import sum, V3, sub, norm, cross, dot, mul, length
+from utils import sum, V3, sub, norm, cross, dot, mul, length, barycentric
 from intersect import Intersect
 
 class Pyramid(object):
-    def __init__(self, arrVec, material):
-        self.arrVec = arrVec
+    def __init__(self, arrPoints, material):
+        self.arrPoints = arrPoints
         self.material = material
-        print("aqui")
 
-    def rayIntersect(self, origin, direction):
-        v0, v1, v2 = self.arrVec
+    def side(self, v0, v1, v2, origin, direction):
         v0v1 = sub(v1, v0)
         v0v2 = sub(v2, v0)
 
         N = cross(v0v1, v0v2)
-        # area2 = length(N)
-
+        
         raydirection = dot(N, direction)
 
         if abs(raydirection) < 0.0001:
@@ -23,43 +19,43 @@ class Pyramid(object):
         
         d = dot(N, v0)
         
-        t = dot(N, origin) + d
+        t = (dot(N, origin) + d) / raydirection
         
         if t < 0:
             return None
 
         P = sum(origin, mul(direction, t))
-
-        edge0 = sub(v1, v0)
-        vp0 = sub(P, v0)
-
-        C = cross(edge0, vp0)
-
-        nc = dot(N, C)
-        print("C", nc)
-        if nc < 0:
+        U, V, W = barycentric(v0, v1, v2, P)
+        
+        if U < 0 or V < 0 or W < 0:
             return None
-
-        edge1 = sub(v2, v1)
-        vp1 = sub(P, v1)
-
-        C = cross(edge1, vp1)
-
-        if dot(N, C) < 0:
-            return None
-
-        edge2 = sub(v0, v2)
-        vp2 = sub(P, v2)
-
-        C = cross(edge2, vp2)
-
-        if dot(N, C) < 0:
-            return None
-
-        print("hola")
-
-        return Intersect(distance = (t / raydirection),
+        else: 
+            return Intersect(distance = d,
                          point = P,
                          normal = norm(N))
+        
 
-    
+    def rayIntersect(self, origin, direction):
+        v0, v1, v2, v3 = self.arrPoints
+        sides = [
+            self.side(v0, v3, v2, origin, direction),
+            self.side(v0, v1, v2, origin, direction),
+            self.side(v1, v3, v2, origin, direction),
+            self.side(v0, v1, v3, origin, direction)
+        ]
+
+        t = float('inf')
+        intersect = None
+
+        for side in sides:
+            if side is not None:
+                if side.distance < t:
+                    t = side.distance
+                    intersect = side
+
+        if intersect is None:
+            return None
+
+        return Intersect(distance = intersect.distance,
+                         point = intersect.point,
+                         normal = intersect.normal)

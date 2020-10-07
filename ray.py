@@ -1,26 +1,26 @@
 from utils import writebmp, norm, V3, sub, dot, reflect, length, mul, sum, refract
 from sphere import Sphere
 from math import pi, tan
-from materials import mona2, tono3, adorno2
+from materials import blue1, blue2
 import random
 from light import *
 from color import *
 from cube import Cube
 from envmap import Envmap
 from pyramid import Pyramid
-from ellipse import Ellipse
+
 
 '''
     Diana Ximena de León Figueroa
     Carne 18607
-    Proyecto #2
+    Proyecto # 2
     Graficas por Computadora
     30 de septiembre de 2020
 '''
 
 BLACK = Color(0, 0, 0)
 WHITE = Color(255, 255, 255)
-BACKGROUND = Color(240, 240, 240)
+BACKGROUND = Color(80, 150, 240)
 MAX_RECURSION_DEPTH = 3
 
 
@@ -132,7 +132,7 @@ class Raytracer(object):
 
 
 r = Raytracer(400, 400)
-r.envMap = Envmap('fondo.bmp')
+#r.envMap = Envmap('fondo.bmp')
 r.light = Light(
     position = V3(0, 0, 20),
     intensity = 1.5
@@ -140,8 +140,14 @@ r.light = Light(
 r.scene = [
     #Sphere(V3(0, 0, -10), 1.5, tono3),
     #Cube(V3(0, 3, -10), 2, adorno2),
-    Pyramid([V3(0.5, 0.5, 1), V3(1, 0.5, 1), V3(0, 1, 1)], tono3)
-    #Ellipse(V3(0,0, -10), 2, 1, tono3)
+    #Pyramid([V3(0.5, 0.5, 1), V3(1, 0.5, 1), V3(0, 1, 1)], tono3)
+    #este funciona
+    #Pyramid([V3(1, -2, -10), V3(-1, 2, -5), V3(-5, -2, -10), V3(0, -1, -7.5)], blue1),
+    #esta se ve como piramide
+    #Pyramid([V3(-3, -2, -10), V3(-2, 1, -5), V3(-6, -2, -10), V3(-1, -1, -7.5)], blue1),
+    Pyramid([V3(-1, -2, -10), V3(-3, 1, -5), V3(-5, -2, -10), V3(-3, -1, -7.5)], blue2),
+    #Pyramid([V3(3, -2, -10), V3(2, 1, -5), V3(6, -2, -10), V3(1, -1.80, -7.5)], blue2),
+    #Pyramid([V3(2, -2, -10), V3(1, 2, -5), V3(4, -2, -10), V3(1, -1, -7.5)], blue1),
 ]
 r.render()
 
