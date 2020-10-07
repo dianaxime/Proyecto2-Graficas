@@ -29,6 +29,8 @@ BLACK = Color(40, 40, 40)
 
 BLUE1 = Color(80, 115, 180)
 BLUE2 = Color(90, 115, 165)
+BLUE3 = Color(80, 100, 160)
+BLUE4 = Color(60, 90, 140)
 
 
 eye = Material(diffuse = BLACK, albedo = (0.6, 0.3, 0.1, 0.1), spec = 5, refractionIndex = 0)
@@ -43,3 +45,5 @@ mona2 = Material(diffuse = GREEN, albedo = (0, 10, 0, 0.8), spec = 1425, refract
 
 blue1 = Material(diffuse = BLUE1, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
 blue2 = Material(diffuse = BLUE2, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
+blue3 = Material(diffuse = BLUE3, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
+blue4 = Material(diffuse = BLUE4, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
