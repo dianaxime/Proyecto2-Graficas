@@ -21,16 +21,20 @@ WHITE = Color(250, 245, 250)
 RED = Color(240, 50, 40)
 BROWN = Color(220, 160, 125)
 ORANGE = Color(230, 115, 50)
-ORANGE2 = Color(175, 85, 45)
 MAROON = Color(125, 20, 10)
 GREEN = Color(180, 190, 65)
 BLACK = Color(40, 40, 40)
 
+ORANGE2 = Color(220, 160, 70)
 
 BLUE1 = Color(80, 115, 180)
 BLUE2 = Color(90, 115, 165)
 BLUE3 = Color(80, 100, 160)
 BLUE4 = Color(60, 90, 140)
+BLUE5 = Color(15, 70, 140)
+BLUE6 = Color(10, 60, 120)
+
+ROSE = Color(235, 210, 230)
 
 
 eye = Material(diffuse = BLACK, albedo = (0.6, 0.3, 0.1, 0.1), spec = 5, refractionIndex = 0)
@@ -38,12 +42,16 @@ oso1 = Material(diffuse = WHITE, albedo = (0.8, 0.8, 0.1, 0.1), spec = 30, refra
 mona1 = Material(diffuse = RED, albedo = (0.6, 0.3, 0.1, 0.1), spec = 15, refractionIndex = 0)
 oso2 = Material(diffuse = BROWN, albedo = (0.9, 0.8, 0.1, 0.1), spec = 30, refractionIndex = 0)
 tono2 = Material(diffuse = ORANGE, albedo = (0.6, 0.3, 0.1, 0.1), spec = 15, refractionIndex = 0)
-tono3 = Material(diffuse = ORANGE2, albedo = (0.6, 0.3, 0.1, 0.1), spec = 15, refractionIndex = 0)
 adorno2 = Material(diffuse = MAROON, albedo = (0.9, 0.9, 0.1, 0.1), spec = 30, refractionIndex = 0)
 mona2 = Material(diffuse = GREEN, albedo = (0, 10, 0, 0.8), spec = 1425, refractionIndex = 1.5)
 
+tono3 = Material(diffuse = ORANGE2, albedo = (0.6, 0.3, 0.1, 0.1), spec = 15, refractionIndex = 0)
 
 blue1 = Material(diffuse = BLUE1, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
 blue2 = Material(diffuse = BLUE2, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
 blue3 = Material(diffuse = BLUE3, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
 blue4 = Material(diffuse = BLUE4, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
+blue5 = Material(diffuse = BLUE5, albedo = (1, 1, 0, 0.9), spec = 50, refractionIndex = 0)
+blue6 = Material(diffuse = BLUE6, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
+
+rose = Material(diffuse = BLUE5, albedo = (1, 1, 0, 0.7), spec = 50, refractionIndex = 0)

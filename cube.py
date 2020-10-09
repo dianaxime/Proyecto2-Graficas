@@ -53,3 +53,4 @@ class Cube(object):
         return Intersect(distance = intersect.distance,
                          point = intersect.point,
                          normal = intersect.normal)
+

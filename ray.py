@@ -1,7 +1,7 @@
 from utils import writebmp, norm, V3, sub, dot, reflect, length, mul, sum, refract
 from sphere import Sphere
 from math import pi, tan
-from materials import blue1, blue2, blue3, blue4
+from materials import blue5, rose
 import random
 from light import *
 from color import *
@@ -9,6 +9,7 @@ from cube import Cube
 from envmap import Envmap
 from pyramid import Pyramid
 from ambientLight import AmbientLight
+from plane import Plane
 
 
 '''
@@ -21,7 +22,7 @@ from ambientLight import AmbientLight
 
 BLACK = Color(0, 0, 0)
 WHITE = Color(255, 255, 255)
-BACKGROUND = Color(80, 150, 240)
+BACKGROUND = Color(240, 200, 130)
 MAX_RECURSION_DEPTH = 3
 
 
@@ -123,6 +124,8 @@ class Raytracer(object):
         fov = int(pi / 2) # field of view
         for y in range(self.height):
             for x in range(self.width):
+                #if random.randint(0, 4) != 0:
+                #    continue
                 i = (2 * (x + 0.5) / self.width - 1) * self.width / self.height * tan(fov / 2)
                 j = (2 * (y + 0.5) / self.height - 1) * tan(fov / 2)
                 direction = norm(V3(i, j, -1))
@@ -153,13 +156,20 @@ r.scene = [
     #Pyramid([V3(1, -2, -10), V3(-1, 2, -5), V3(-5, -2, -10), V3(0, -1, -7.5)], blue1),
     #esta se ve como piramide
     #Pyramid([V3(-3, -2, -10), V3(-2, 1, -5), V3(-6, -2, -10), V3(-1, -1, -7.5)], blue1),
-    Pyramid([V3(-1, 0, -10), V3(-3, 2, -10), V3(-5, 0, -10), V3(-1, 0, -10)], blue3),
-    Pyramid([V3(1, 0, -10), V3(3, 2, -10), V3(5, 0, -10), V3(1, 0, -10)], blue3),
-    Pyramid([V3(-2, 0, -10), V3(-4, 2, -10), V3(-6, 0, -10), V3(-2, 0, -10)], blue2),
-    Pyramid([V3(2, 0, -10), V3(4, 2, -10), V3(6, 0, -10), V3(2, 0, -10)], blue2),
-    Pyramid([V3(0, 0, -10), V3(-2, 2, -10), V3(-4, 0, -10), V3(0, 0, -10)], blue4),
-    Pyramid([V3(0, 0, -10), V3(2, 2, -10), V3(4, 0, -10), V3(0, 0, -10)], blue4),
-    Pyramid([V3(2, 0, -10), V3(0, 3, -10), V3(-2, 0, -10), V3(2, 0, -10)], blue1),
+    #Pyramid([V3(-1, 0, -10), V3(-3, 2, -10), V3(-5, 0, -10), V3(-1, 0, -10)], blue3),
+    #Pyramid([V3(1, 0, -10), V3(3, 2, -10), V3(5, 0, -10), V3(1, 0, -10)], blue3),
+    #Pyramid([V3(-2, 0, -10), V3(-4, 2, -10), V3(-6, 0, -10), V3(-2, 0, -10)], blue2),
+    #Pyramid([V3(2, 0, -10), V3(4, 2, -10), V3(6, 0, -10), V3(2, 0, -10)], blue2),
+    #Pyramid([V3(0, 0, -10), V3(-2, 2, -10), V3(-4, 0, -10), V3(0, 0, -10)], blue4),
+    #Pyramid([V3(0, 0, -10), V3(2, 2, -10), V3(4, 0, -10), V3(0, 0, -10)], blue4),
+    #Pyramid([V3(2, 0, -10), V3(0, 3, -10), V3(-2, 0, -10), V3(2, 0, -10)], blue1),
+    #Plane(V3(0, -2, -10), V3(0,1,0), blue5),
+    #Plane(V3(-6, -4, -10), V3(0,1,0), blue5),
+    #Cube(V3(0, -2.9, -10), 2, blue5),
+    #Cube(V3(-2, -2.9, -10), 2, blue5),
+    Cube(V3(3, 0, -10), 2, blue5),
+    Cube(V3(3, 1.5, -10), 1, rose),
+    #Plane(V3(3, -4, -5), V3(0,1,0), tono3),
 ]
 r.render()
 
