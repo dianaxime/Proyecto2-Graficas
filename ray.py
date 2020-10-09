@@ -1,7 +1,7 @@
 from utils import writebmp, norm, V3, sub, dot, reflect, length, mul, sum, refract
 from sphere import Sphere
 from math import pi, tan
-from materials import blue1, blue2, blue3, blue4, blue5, blue6, blue7, beige, brown
+from materials import blue1, blue2, blue3, blue4, blue5, blue6, blue7, beige, brown, white
 import random
 from light import *
 from color import *
@@ -163,6 +163,8 @@ r.scene = [
     Pyramid([V3(1, 0.5, -10), V3(-1, -0.25, -5), V3(1, -1, -10), V3(-0.0, -1, -7.5)], brown),
 
     Cube(V3(0.75, -0.75, -2.5), 0.5, blue5),
+    Sphere(V3(0.75, -0.40, -2.5), 0.20, white),
+    Sphere(V3(0.75, -0.16, -2.5), 0.05, white),
     Plane(V3(2, -2, -10), V3(0,1,0), blue7),
 ]
 r.render()

@@ -36,5 +36,6 @@ blue4 = Material(diffuse = BLUE4, albedo = (1, 1, 0, 0), spec = 50, refractionIn
 blue5 = Material(diffuse = BLUE5, albedo = (1, 1, 0, 0.9), spec = 50, refractionIndex = 0)
 blue6 = Material(diffuse = BLUE6, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
 blue7 = Material(diffuse = BLUE5, albedo = (0.25, 1, 1, 0), spec = 65, refractionIndex = 0)
-beige = Material(diffuse = BEIGE, albedo = (1, 0, 0, 0), spec = 65, refractionIndex = 0)
-brown = Material(diffuse = BROWN, albedo = (1, 0, 0, 0), spec = 65, refractionIndex = 0)
+beige = Material(diffuse = BEIGE, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
+brown = Material(diffuse = BROWN, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
+white = Material(diffuse = WHITE, albedo = (1, 1, 0, 0.9), spec = 65, refractionIndex = 0)
