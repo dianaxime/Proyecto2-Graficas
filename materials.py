@@ -27,6 +27,9 @@ BLUE5 = Color(15, 70, 140)
 BLUE6 = Color(10, 60, 120)
 BEIGE = Color(195, 170, 160)
 BROWN = Color(110, 100, 90)
+GREEN = Color(100, 115, 30)
+
+PURE = Color(255, 255, 255)
 
 
 blue1 = Material(diffuse = BLUE1, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)
@@ -39,3 +42,6 @@ blue7 = Material(diffuse = BLUE5, albedo = (0.25, 1, 1, 0), spec = 65, refractio
 beige = Material(diffuse = BEIGE, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
 brown = Material(diffuse = BROWN, albedo = (1, 0, 0, 0), spec = 50, refractionIndex = 0)
 white = Material(diffuse = WHITE, albedo = (1, 1, 0, 0.9), spec = 65, refractionIndex = 0)
+glass = Material(diffuse = PURE, albedo = (0, 0, 1, 0), spec = 65, refractionIndex = 0)
+mirror = Material(diffuse=PURE, albedo=(0, 10, 0.8, 0), spec=1425, refractionIndex = 0)
+green = Material(diffuse = GREEN, albedo = (1, 1, 0, 0), spec = 50, refractionIndex = 0)

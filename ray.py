@@ -1,7 +1,7 @@
 from utils import writebmp, norm, V3, sub, dot, reflect, length, mul, sum, refract
 from sphere import Sphere
 from math import pi, tan
-from materials import blue1, blue2, blue3, blue4, blue5, blue6, blue7, beige, brown, white
+from materials import blue1, blue2, blue3, blue4, blue5, blue6, blue7, beige, brown, white, glass, mirror, green
 import random
 from light import *
 from color import *
@@ -124,8 +124,8 @@ class Raytracer(object):
         fov = int(pi / 2) # field of view
         for y in range(self.height):
             for x in range(self.width):
-                if random.randint(0,2) != 0:
-                    continue
+                #if random.randint(0,2) != 0:
+                #    continue
                 i = (2 * (x + 0.5) / self.width - 1) * self.width / self.height * tan(fov / 2)
                 j = (2 * (y + 0.5) / self.height - 1) * tan(fov / 2)
                 direction = norm(V3(i, j, -1))
@@ -161,7 +161,54 @@ r.scene = [
     Cube(V3(0.75, -0.75, -2.5), 0.5, blue5),
     Sphere(V3(0.75, -0.40, -2.5), 0.20, white),
     Sphere(V3(0.75, -0.16, -2.5), 0.05, white),
-    Plane(V3(2, -2, -10), V3(0,1,0), blue7),
+    Plane(V3(2, -10, -15), V3(0,1,0), mirror),
+    
+    
+    Sphere(V3(5, 0.1, -10), 0.10, green),
+    Sphere(V3(5.2, 0.2, -10), 0.10, green),
+    Sphere(V3(4, -0.40, -10), 0.10, green),
+    Sphere(V3(3.7, -0.40, -10), 0.10, green),
+    Sphere(V3(4.2, -0.80, -10), 0.10, green),
+    Sphere(V3(4.5, -0.80, -10), 0.10, green),
+    Sphere(V3(4.4, 0, -10), 0.10, green),
+    Sphere(V3(3.5, -0.50, -10), 0.10, green),
+    Sphere(V3(4.5, -0.20, -10), 0.10, green),
+    Sphere(V3(4.8, 0, -10), 0.10, green),
+    Sphere(V3(3.5, -2, -10), 0.10, green),
+    Sphere(V3(4.5, -1, -10), 0.10, green),
+    Sphere(V3(4, -1.5, -10), 0.10, green),
+    Sphere(V3(4.5, -1.4, -10), 0.10, green),
+    Sphere(V3(4.2, -1.4, -10), 0.10, green),
+    Sphere(V3(4.7, -1.8, -10), 0.10, green),
+    Sphere(V3(5, -1.8, -10), 0.10, green),
+    Sphere(V3(5, -1, -10), 0.10, green),
+    Sphere(V3(4, -1.5, -10), 0.10, green),
+    Sphere(V3(5, -1.2, -10), 0.10, green),
+    Sphere(V3(5.3, -1, -10), 0.10, green),
+    Sphere(V3(4, -3, -10), 0.10, green),
+    Sphere(V3(5, -2, -10), 0.10, green),
+    Sphere(V3(4.5, -2.5, -10), 0.10, green),
+    Sphere(V3(4.7, -3, -10), 0.10, green),
+    Sphere(V3(5, -3.5, -10), 0.10, green),
+    Sphere(V3(5, -4, -10), 0.10, green),
+    Sphere(V3(4, -4.5, -10), 0.10, green),
+    Sphere(V3(5, -5, -10), 0.10, green),
+    Sphere(V3(5.3, -4, -10), 0.10, green),
+    Sphere(V3(4.5, -4.5, -10), 0.10, green),
+    Sphere(V3(5, -3.5, -10), 0.10, green),
+    Sphere(V3(4.5, -3, -10), 0.10, green),
+
+
+    Sphere(V3(-3.7, -0.40, -10), 0.10, green),
+    Sphere(V3(-4.2, -0.80, -10), 0.10, green),
+    Sphere(V3(-4.5, -0.80, -10), 0.10, green),
+    Sphere(V3(-4.4, 0, -10), 0.10, green),
+    Sphere(V3(-3.5, -0.50, -10), 0.10, green),
+    Sphere(V3(-4.5, -0.20, -10), 0.10, green),
+    Sphere(V3(-4.8, 0, -10), 0.10, green),
+    Sphere(V3(-3.5, -2, -10), 0.10, green),
+    Sphere(V3(-4.5, -1, -10), 0.10, green),
+    Sphere(V3(-4, -1.5, -10), 0.10, green),
 ]
 r.render()
 
